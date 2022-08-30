@@ -3,12 +3,17 @@ import './Card.scss';
 
 const Card = ({ card }) => {
 	return (
-		<li className="card-item">
+		<div className="card-item">
 			{card.cover && (
-				<img src={card.cover} alt="" className="card-cover" />
+				<img
+					src={card.cover}
+					alt=""
+					className="card-cover"
+					draggable="false"
+				/>
 			)}
 			{card.title}
-		</li>
+		</div>
 	);
 };
 
