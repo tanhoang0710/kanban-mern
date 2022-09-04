@@ -9,20 +9,65 @@ $column-height: calc(#{$board-content-height} - #{$gap * 2});
 	width: 300px;
 	height: $column-height;
 	margin-left: $gap;
+
 	> * {
 		background-color: $column-bg-color;
 		padding: 0 8px;
 	}
 
 	header.column-drag-handle {
-		padding-left: 15px;
-		height: $column-header-height;
+		padding: 5px 8px;
+		height: 45px;
 		line-height: $column-header-height;
 		font-size: 16px;
 		font-weight: bold;
 		border-top-left-radius: $column-border-radius;
 		border-top-right-radius: $column-border-radius;
 		cursor: pointer;
+		display: flex;
+
+		.column-title {
+			flex: 90%;
+		}
+
+		.column-dropdown-actions {
+			flex: 10%;
+
+			button.dropdown-btn {
+				padding: 0 $gap;
+				font-size: 16px;
+				font-weight: bold;
+				letter-spacing: 1px;
+				background-color: $column-bg-color;
+				border-color: $column-bg-color;
+				color: $app-main-text-color;
+				margin-bottom: 8px;
+
+				&:after {
+					content: '...';
+					border: none;
+				}
+
+				&:hover {
+					background-color: darken($column-bg-color, 10);
+					border-color: darken($column-bg-color, 10);
+				}
+			}
+
+			.dropdown-menu {
+				padding: 0;
+				min-width: 200px;
+
+				a.dropdown-item {
+					padding: 0.1rem 1rem;
+					font-size: 14px;
+
+					&:not(:last-child) {
+						border-bottom: 1px solid darken($column-bg-color, 10);
+					}
+				}
+			}
+		}
 	}
 
 	footer {
@@ -49,6 +94,7 @@ $column-height: calc(#{$board-content-height} - #{$gap * 2});
 			#{$column-height} - #{$column-header-height} - #{$column-footer-height}
 		);
 		overflow-y: auto;
+
 		&::-webkit-scrollbar {
 			-webkit-appearance: none;
 		}
@@ -59,6 +105,7 @@ $column-height: calc(#{$board-content-height} - #{$gap * 2});
 			background-color: darken($column-bg-color, 15);
 			border-right: 5px $column-bg-color solid;
 		}
+
 		.card-ghost {
 			transition: transform 0.18s ease;
 			transform: rotateZ(5deg);
