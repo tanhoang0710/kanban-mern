@@ -18,10 +18,14 @@ import {
 const BoardContent = () => {
 	const [board, setBoard] = useState({});
 	const [columns, setColumns] = useState([]);
-	const [openNewColumnForm, setOpenNewColumnForm] = useState(false);
-	const [newColumnTitle, setNewColumnTitle] = useState('');
 	const newColumnInputRef = useRef(null);
 
+	const [openNewColumnForm, setOpenNewColumnForm] = useState(false);
+	const toggleOpenNewColumnForm = () => {
+		setOpenNewColumnForm(!openNewColumnForm);
+	};
+
+	const [newColumnTitle, setNewColumnTitle] = useState('');
 	const onNewColumnTitleChange = (e) => {
 		setNewColumnTitle(e.target.value);
 	};
@@ -80,10 +84,6 @@ const BoardContent = () => {
 
 			setColumns(newColumns);
 		}
-	};
-
-	const toggleOpenNewColumnForm = () => {
-		setOpenNewColumnForm(!openNewColumnForm);
 	};
 
 	const addNewColumn = () => {
@@ -193,7 +193,7 @@ const BoardContent = () => {
 								Add column
 							</Button>
 							<span
-								className="cancel-new-column"
+								className="cancel-icon"
 								onClick={toggleOpenNewColumnForm}
 							>
 								<i className="fa fa-times icon"></i>
